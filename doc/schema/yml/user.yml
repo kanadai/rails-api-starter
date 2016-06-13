@@ -1,0 +1,74 @@
+---
+"$schema": http://json-schema.org/draft-04/hyper-schema
+title: FIXME - User
+description: FIXME
+stability: prototype
+strictProperties: true
+type:
+- object
+definitions:
+  id:
+    description: unique identifier of user
+    readOnly: true
+    format: uuid
+    type:
+    - integer
+  name:
+    description: unique name of user
+    type:
+    - string
+  email:
+    description: user email
+    type:
+    - string
+  password:
+    description: user password
+    type:
+    - string
+  identity:
+    anyOf:
+    - "$ref": "/schemata/user#/definitions/id"
+links:
+- description: Create a new user.
+  href: "/users"
+  method: POST
+  rel: create
+  schema:
+    properties: {}
+    type:
+    - object
+  title: Create
+- description: Delete an existing user.
+  href: "/users/{(%2Fschemata%2Fuser%23%2Fdefinitions%2Fidentity)}"
+  method: DELETE
+  rel: destroy
+  title: Delete
+- description: Info for existing user.
+  href: "/users/{(%2Fschemata%2Fuser%23%2Fdefinitions%2Fidentity)}"
+  method: GET
+  rel: self
+  title: Info
+- description: List existing users.
+  href: "/users"
+  method: GET
+  rel: instances
+  title: List
+- description: Update an existing user.
+  href: "/users/{(%2Fschemata%2Fuser%23%2Fdefinitions%2Fidentity)}"
+  method: PATCH
+  rel: update
+  schema:
+    properties: {}
+    type:
+    - object
+  title: Update
+properties:
+  email:
+    "$ref": "/schemata/user#/definitions/email"
+  id:
+    "$ref": "/schemata/user#/definitions/id"
+  name:
+    "$ref": "/schemata/user#/definitions/name"
+  password:
+    "$ref": "/schemata/user#/definitions/password"
+id: schemata/user
